@@ -13,299 +13,325 @@
 <link rel="icon" href="assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/dana-point-12000-exterior.webp" type="image/webp">
 <style>
 :root{
   --navy:#1C2769;
   --harbor:#0175AE;
   --deep:#11387D;
-  --mist:#EEF2F6;
+  --mist:#EFF2F5;
   --travertine:#D8CDBB;
   --ink:#141414;
-  --ink-soft:#4A4F5C;
-  --line:#D9DEE6;
+  --ink-soft:#4C515D;
+  --hair:#DCE1E8;
   --paper:#FFFFFF;
+  --night:#0F1640;
 
   --display:"Libre Caslon Display","Libre Caslon Text",Georgia,serif;
   --serif:"Libre Caslon Text",Georgia,serif;
   --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
 
-  --wrap:1220px;
-  --gutter:clamp(16px,4vw,40px);
+  --wrap:1240px;
+  --gutter:clamp(16px,4.5vw,56px);
+  --header-h:76px;
 }
+[hidden]{display:none!important}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:var(--harbor)}
 a:hover{color:var(--deep)}
 :focus-visible{outline:3px solid var(--harbor);outline-offset:3px}
-h1,h2,h3{color:var(--navy);margin:0}
-h2{font:400 clamp(32px,4vw,48px)/1.1 var(--display);letter-spacing:-.005em}
-h3{font:700 21px/1.3 var(--serif)}
+h1,h2,h3{margin:0;font-weight:400}
+h2{font:400 clamp(34px,4.2vw,54px)/1.08 var(--display);color:var(--navy);letter-spacing:-.01em}
 p{margin:0 0 1em}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
-.skip{position:absolute;left:-9999px;top:8px;background:var(--navy);color:#fff;padding:10px 14px;z-index:100}
+.skip{position:absolute;left:-9999px;top:8px;z-index:100;background:var(--navy);color:#fff;padding:10px 14px}
 .skip:focus{left:8px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.place{display:block;font:600 12px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--harbor)}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:3px;font:600 16px/1 var(--sans);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
-.btn-navy{background:var(--navy);color:#fff}
-.btn-navy:hover{background:var(--deep);color:#fff}
+/* Buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:2px;font:600 15px/1 var(--sans);letter-spacing:.02em;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap}
+.btn-solid{background:var(--navy);color:#fff}
+.btn-solid:hover{background:var(--deep);color:#fff}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-light:hover{background:var(--mist);color:var(--navy)}
 .btn-line{background:#fff;color:var(--navy);border-color:var(--navy)}
-.btn-line:hover{background:var(--mist);color:var(--navy)}
+.text-link{font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
 
 /* Header */
-.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid transparent;transition:border-color .2s}
-.site-header.scrolled{border-bottom-color:var(--line)}
-.header-inner{display:flex;align-items:center;gap:28px;height:84px}
+.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid transparent;transition:border-color .3s}
+.site-header.scrolled{border-bottom-color:var(--hair)}
+.header-inner{display:flex;align-items:center;gap:36px;height:var(--header-h)}
 .brand{display:block;flex-shrink:0}
-.brand img{width:178px;height:auto}
-.site-nav{display:flex;align-items:center;gap:28px;margin-left:auto}
-.site-nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:16px}
-.site-nav a:hover{color:var(--harbor)}
-.site-nav .nav-cta{display:none}
-.header-phone{font-weight:600;color:var(--navy);text-decoration:none;white-space:nowrap}
-.menu-toggle{display:none;flex-shrink:0;width:48px;height:48px;border:1px solid var(--line);border-radius:3px;background:#fff;cursor:pointer;padding:0;align-items:center;justify-content:center}
-.menu-toggle span{display:block;width:20px;height:2px;background:var(--navy);position:relative}
-.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--navy)}
+.brand img{width:172px}
+.nav{display:flex;align-items:center;gap:32px;margin-left:auto}
+.nav a{color:var(--ink);text-decoration:none;font:600 12.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.nav a:hover{color:var(--harbor)}
+.header-phone{font:500 15px/1 var(--sans);color:var(--navy);text-decoration:none;white-space:nowrap}
+.header-cta{min-height:44px;padding:0 20px}
+.menu-toggle{display:none;flex-shrink:0;width:46px;height:46px;border:1px solid var(--hair);border-radius:2px;background:#fff;cursor:pointer;padding:0;align-items:center;justify-content:center}
+.menu-toggle span{display:block;width:20px;height:1.5px;background:var(--navy);position:relative}
+.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:20px;height:1.5px;background:var(--navy)}
 .menu-toggle span::before{top:-6px}.menu-toggle span::after{top:6px}
 
-/* Hero */
-.hero{padding:clamp(28px,4vw,56px) 0 clamp(56px,7vw,96px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
-.hero h1{font:400 clamp(40px,4.6vw,64px)/1.04 var(--display);letter-spacing:-.012em;max-width:13ch}
-.hero .lede{font-size:19px;line-height:1.6;color:var(--ink-soft);max-width:34em;margin:24px 0 0}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
-.hero-sign{margin:28px 0 0;font:italic 400 17px/1.5 var(--serif);color:var(--navy)}
-.hero-figure{position:relative;margin:0;padding:0 0 0 clamp(28px,3vw,48px)}
-.hero-figure picture img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
-.hero-figure figcaption{margin-top:12px;font-size:14px;color:var(--ink-soft);padding-left:clamp(84px,9vw,124px)}
-.cornerstone{position:absolute;left:0;bottom:-26px;width:clamp(120px,12vw,170px);height:auto;overflow:visible}
+/* Hero: one full-width photograph */
+.hero{position:relative;color:#fff}
+.hero-media{position:relative;height:calc(100vh - var(--header-h) - 72px);min-height:560px;max-height:940px;overflow:hidden;background:#3a4252}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,16,40,.72) 0%,rgba(12,16,40,.38) 34%,rgba(12,16,40,0) 62%),linear-gradient(to right,rgba(12,16,40,.55),rgba(12,16,40,.2) 45%,rgba(12,16,40,0) 70%)}
+.hero-copy{position:absolute;left:0;right:0;bottom:clamp(64px,9vh,104px);z-index:2}
+.hero h1{font:400 clamp(42px,5.4vw,78px)/1.02 var(--display);letter-spacing:-.015em;max-width:15ch;color:#fff}
+.hero .lede{font-size:18px;line-height:1.6;max-width:36em;margin:22px 0 0;color:rgba(255,255,255,.9)}
+.hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:32px}
+.hero-actions .text-link{color:#fff}
+.hero-caption{position:absolute;right:var(--gutter);bottom:22px;z-index:2;margin:0;font-size:13px;letter-spacing:.04em;color:rgba(255,255,255,.82)}
+.cornerstone{position:absolute;z-index:3;left:max(var(--gutter),calc((100% - var(--wrap))/2 + var(--gutter)));bottom:0;width:clamp(96px,8.5vw,128px);height:auto;transform:translateY(52%);overflow:visible}
 .cornerstone rect{transform-box:fill-box;transform-origin:center}
 @media (prefers-reduced-motion:no-preference){
-  .cornerstone .cs-bar{animation:set-bar .9s cubic-bezier(.2,.7,.2,1) .25s both}
-  .cornerstone .cs-a{animation:set-block .7s cubic-bezier(.2,.7,.2,1) .85s both}
-  .cornerstone .cs-b{animation:set-block .7s cubic-bezier(.2,.7,.2,1) 1.1s both}
+  .cornerstone .cs-bar{animation:set-bar 1.1s cubic-bezier(.2,.7,.2,1) .35s both}
+  .cornerstone .cs-a{animation:set-block .9s cubic-bezier(.2,.7,.2,1) 1.05s both}
+  .cornerstone .cs-b{animation:set-block .9s cubic-bezier(.2,.7,.2,1) 1.35s both}
 }
-@keyframes set-bar{from{opacity:0;transform:translateX(-60%)}to{opacity:1;transform:none}}
-@keyframes set-block{from{opacity:0;transform:translateY(-70%)}to{opacity:1;transform:none}}
+@keyframes set-bar{from{opacity:0;transform:translateX(-50%)}to{opacity:1;transform:none}}
+@keyframes set-block{from{opacity:0;transform:translateY(-60%)}to{opacity:1;transform:none}}
 
-/* Facts strip */
-.facts{background:var(--navy);color:#fff}
-.facts ul{list-style:none;margin:0;padding:30px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.facts li{padding-left:18px;border-left:2px solid var(--harbor)}
-.facts strong{display:block;font:400 23px/1.25 var(--display);color:#fff}
-.facts span{display:block;font-size:15px;color:#C9D1E6;margin-top:4px}
+/* Credentials as quiet figures */
+.figures{padding:clamp(96px,10vw,132px) 0 clamp(40px,5vw,64px)}
+.figures ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(20px,3vw,40px)}
+.figures li{border-top:1px solid var(--navy);padding-top:18px}
+.figures strong{display:block;font:400 clamp(22px,2vw,27px)/1.25 var(--display);color:var(--navy)}
+.figures span{display:block;font-size:15px;color:var(--ink-soft);margin-top:6px}
 
 /* Sections */
-.section{padding:clamp(64px,9vw,120px) 0}
-.section-head{max-width:46rem;margin-bottom:clamp(36px,5vw,56px)}
-.section-head p{font-size:19px;color:var(--ink-soft);margin:18px 0 0}
+.section{padding:clamp(72px,10vw,136px) 0}
+.section-head{max-width:46rem;margin-bottom:clamp(40px,5vw,64px)}
+.section-head p{font-size:18px;color:var(--ink-soft);margin:20px 0 0;max-width:38em}
 
-/* About Scott */
-.about-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:start}
-.about-copy p{font-size:18px;max-width:36em}
-.about-copy .about-lead{font:400 23px/1.5 var(--serif);color:var(--navy);margin-bottom:24px}
-.about-side{border-top:2px solid var(--navy);padding-top:22px}
-.about-side h3{margin-bottom:14px}
+/* About */
+.about{padding-top:clamp(40px,5vw,64px)}
+.about-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(40px,7vw,120px);align-items:start}
+.about-lead{font:400 clamp(21px,1.9vw,25px)/1.55 var(--serif);color:var(--navy);margin:32px 0 28px;max-width:30em}
+.about-copy > p:not(.about-lead){max-width:36em;color:var(--ink-soft)}
+.about-side{padding-top:8px}
+.about-side h3{font:600 12.5px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
 .about-side dl{margin:0}
-.about-side dt{font-weight:600;color:var(--navy);margin-top:16px}
-.about-side dd{margin:2px 0 0;color:var(--ink-soft)}
+.about-side dt{font:400 20px/1.3 var(--display);color:var(--navy);margin-top:22px;padding-top:18px;border-top:1px solid var(--hair)}
+.about-side dd{margin:6px 0 0;color:var(--ink-soft);font-size:16px}
 
 /* Process */
 .process{background:var(--mist)}
-.process-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px)}
-.process-intro blockquote{margin:28px 0 0;padding:0 0 0 20px;border-left:2px solid var(--travertine)}
-.process-intro blockquote p{font:italic 400 19px/1.55 var(--serif);color:var(--navy);margin:0 0 10px}
-.process-intro cite{font-style:normal;font-size:15px;color:var(--ink-soft)}
+.process-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,7vw,120px)}
+.process-intro .process-lede{margin-top:22px;font-size:18px;color:var(--ink-soft)}
+.process-intro blockquote{margin:36px 0 0;padding:0 0 0 22px;border-left:1px solid var(--travertine)}
+.process-intro blockquote p{font:italic 400 20px/1.55 var(--serif);color:var(--navy);margin:0 0 12px}
+.process-intro cite{font-style:normal;font-size:14px;color:var(--ink-soft)}
 .steps{list-style:none;margin:0;padding:0;counter-reset:step}
-.steps li{counter-increment:step;display:grid;grid-template-columns:56px 1fr;gap:0 16px;padding:22px 0;border-top:1px solid #CBD3DD}
-.steps li:last-child{border-bottom:1px solid #CBD3DD}
-.steps li::before{content:counter(step);grid-row:span 2;font:400 34px/1 var(--display);color:var(--harbor)}
-.steps h3{font-size:19px}
+.steps li{counter-increment:step;display:grid;grid-template-columns:52px 1fr;gap:0 18px;padding:26px 0;border-top:1px solid #CDD4DE}
+.steps li:last-child{border-bottom:1px solid #CDD4DE}
+.steps li::before{content:counter(step);grid-row:span 2;font:400 30px/1 var(--display);color:var(--harbor)}
+.steps h3{font:700 19px/1.35 var(--serif);color:var(--navy)}
 .steps p{margin:6px 0 0;color:var(--ink-soft)}
-.site-strip{margin-top:clamp(48px,6vw,72px)}
-.site-strip-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.site-strip-photos img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:2px}
-.site-strip p{margin:14px 0 0;font-size:15px;color:var(--ink-soft)}
+.site-strip{margin-top:clamp(56px,7vw,88px)}
+.site-strip-photos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:14px}
+.site-strip-photos picture:first-child{grid-row:span 2}
+.site-strip-photos img{width:100%;height:100%;object-fit:cover;border-radius:1px}
+.site-strip-photos picture:first-child img{aspect-ratio:16/10}
+.site-strip p{margin:16px 0 0;font-size:14px;color:var(--ink-soft)}
 
-/* Work */
-.case{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,4vw,56px);align-items:start}
-.case + .case{margin-top:clamp(64px,8vw,104px)}
-.case-text h3{font:400 clamp(26px,2.6vw,34px)/1.15 var(--display);margin-bottom:12px}
-.case-meta{font-weight:600;color:var(--harbor);margin-bottom:14px}
-.case-text p{color:var(--ink-soft)}
-.case-photos{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.case-photos figure{margin:0}
-.case-photos img{width:100%;height:100%;object-fit:cover;border-radius:2px}
-.case-photos .big{grid-column:span 6;aspect-ratio:16/9}
-.case-photos .third{grid-column:span 2;aspect-ratio:4/3}
-.case-photos .half{grid-column:span 3;aspect-ratio:4/3}
-.case-photos .big.tall-crop img{object-position:center 60%}
-.note{margin-top:clamp(40px,5vw,56px);padding:20px 24px;background:var(--mist);border-left:3px solid var(--harbor);max-width:46rem}
-.note p{margin:0}
+/* Work: named projects */
+.project-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.project-head h3{font:400 clamp(30px,3vw,40px)/1.1 var(--display);color:var(--navy);margin-top:10px}
+.project-head p{margin:0;max-width:30em;color:var(--ink-soft)}
+.project-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.project-photos figure{margin:0}
+.project-photos img{width:100%;height:100%;object-fit:cover;border-radius:1px}
+.project-photos .lead{grid-column:1/-1;aspect-ratio:2/1}
+.project-photos .sm{aspect-ratio:4/3}
+.note{margin:clamp(40px,5vw,56px) 0 0;padding-top:20px;border-top:1px solid var(--hair);max-width:46rem;color:var(--ink-soft)}
 
-.prior{border-top:1px solid var(--line)}
-.disclosure{display:inline-block;margin-top:18px;font-size:15px;color:var(--ink-soft);background:var(--mist);padding:8px 14px;border-radius:2px}
-.case blockquote{margin:24px 0 0;padding:20px 0 0;border-top:2px solid var(--travertine)}
-.case blockquote p{font:italic 400 18px/1.6 var(--serif);color:var(--navy);margin:0 0 12px}
-.case blockquote cite{font-style:normal;font-size:15px;color:var(--ink-soft);display:block;line-height:1.5}
-.case blockquote cite strong{display:block;color:var(--ink);font-weight:600}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.about-copy .about-lead{margin-top:28px}
-.process-intro .process-lede{margin-top:20px;font-size:18px;color:var(--ink-soft)}
-.case.flip{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}
-.case.flip .case-text{order:2}
+/* Earlier homes: matted photos beside the owners' words */
+.earlier{border-top:1px solid var(--hair)}
+.case{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(36px,6vw,96px);align-items:center}
+.case + .case{margin-top:clamp(72px,9vw,120px)}
+.case.flip{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.case.flip .mat{order:2}
+.mat{background:var(--mist);padding:clamp(18px,3vw,40px)}
+.mat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:760px;margin:0 auto}
+.mat-grid figure{margin:0}
+.mat-grid img{width:100%;height:100%;object-fit:cover}
+.mat-grid .lead{grid-column:1/-1;aspect-ratio:3/2}
+.mat-grid .sm{aspect-ratio:3/2}
+.case-text h3{font:400 clamp(28px,2.8vw,38px)/1.12 var(--display);color:var(--navy);margin:10px 0 8px}
+.case-meta{color:var(--ink-soft);margin:0}
+.case blockquote{margin:28px 0 0;padding:24px 0 0;border-top:1px solid var(--travertine)}
+.case blockquote p{font:italic 400 19px/1.6 var(--serif);color:var(--navy);margin:0 0 14px}
+.case cite{font-style:normal;font-size:15px;color:var(--ink-soft);display:block;line-height:1.5}
+.case cite strong{display:block;color:var(--ink);font-weight:600}
+.disclosure{margin:22px 0 0;font-size:14px;color:var(--ink-soft)}
 
-/* Official quote */
-.official{background:var(--navy);color:#fff}
-.official .wrap{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,8fr);gap:clamp(24px,4vw,64px);align-items:start}
-.official-mark{width:84px;height:auto}
+/* Official recommendation */
+.official{padding:clamp(72px,9vw,120px) 0}
+.official .wrap{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,9fr);gap:clamp(24px,4vw,64px);align-items:start}
+.official-inner{border-top:1px solid var(--navy);border-bottom:1px solid var(--hair);padding:clamp(36px,4vw,56px) 0}
+.official-mark{width:72px;height:auto;margin-top:clamp(36px,4vw,56px)}
 .official blockquote{margin:0}
-.official blockquote p{font:400 clamp(24px,2.8vw,36px)/1.35 var(--display);color:#fff;margin:0 0 24px;max-width:30em}
-.official cite{font-style:normal;color:#C9D1E6;font-size:16px}
-.official cite strong{color:#fff;font-weight:600}
+.official blockquote p{font:400 clamp(25px,2.9vw,38px)/1.38 var(--display);color:var(--navy);margin:0 0 26px;max-width:32em}
+.official cite{font-style:normal;color:var(--ink-soft);font-size:15px}
+.official cite strong{color:var(--ink);font-weight:600}
 
 /* Inquiry */
-.inquiry-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
-.inquiry-aside p{font-size:18px;color:var(--ink-soft);margin-top:18px}
-.call-card{margin-top:32px;padding:24px;border:1px solid var(--line);border-top:3px solid var(--navy);border-radius:2px}
+.inquiry{background:var(--mist)}
+.inquiry-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,7vw,120px);align-items:start}
+.inquiry-aside p{font-size:18px;color:var(--ink-soft);margin-top:20px}
+.call-card{margin-top:36px;padding-top:22px;border-top:1px solid var(--navy)}
 .call-card span{display:block;color:var(--ink-soft);font-size:15px}
-.call-card a{display:block;font:400 clamp(30px,3vw,38px)/1.2 var(--display);color:var(--navy);text-decoration:none;margin:6px 0}
+.call-card a{display:block;font:400 clamp(30px,3vw,40px)/1.2 var(--display);color:var(--navy);text-decoration:none;margin:6px 0}
 .call-card a:hover{color:var(--harbor)}
-form{background:var(--mist);padding:clamp(22px,3.5vw,40px);border-radius:2px}
-fieldset{border:0;margin:0 0 22px;padding:0}
-legend,.field label{display:block;font-weight:600;color:var(--navy);margin-bottom:10px;font-size:16px}
+form{background:#fff;padding:clamp(22px,3.5vw,44px);border-radius:2px}
+fieldset{border:0;margin:0 0 24px;padding:0}
+legend,.field label{display:block;font-weight:600;color:var(--navy);margin-bottom:10px;font-size:15px}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chip{position:relative}
-.chip input{position:absolute;opacity:0;width:1px;height:1px}
-.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;background:#fff;border:1px solid #C3CCD8;border-radius:3px;cursor:pointer;font-size:15px}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;background:#fff;border:1px solid #C6CEDA;border-radius:2px;cursor:pointer;font-size:15px}
 .chip input:checked + span{background:var(--navy);border-color:var(--navy);color:#fff}
 .chip input:focus-visible + span{outline:3px solid var(--harbor);outline-offset:2px}
 .field{margin-bottom:18px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field input,.field select,.field textarea{width:100%;min-height:48px;padding:10px 12px;font:400 16px/1.4 var(--sans);color:var(--ink);background:#fff;border:1px solid #C3CCD8;border-radius:3px}
+.field input,.field select,.field textarea{width:100%;min-height:48px;padding:10px 12px;font:400 16px/1.4 var(--sans);color:var(--ink);background:#fff;border:1px solid #C6CEDA;border-radius:2px}
 .field textarea{min-height:120px;resize:vertical}
 .hint{font-weight:400;color:var(--ink-soft)}
 .form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px}
-.form-foot p{margin:0;font-size:15px;color:var(--ink-soft)}
+.form-foot p{margin:0;font-size:14px;color:var(--ink-soft)}
 .form-status{margin:16px 0 0;font-weight:500;min-height:1.6em}
 .form-status.error{color:#A4262C}
 
 /* Footer */
-.site-footer{background:#0F1640;color:#C9D1E6;padding:64px 0 40px;font-size:16px}
+.site-footer{background:var(--night);color:#C3CBE0;padding:72px 0 40px;font-size:15px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
-.footer-logo{background:#fff;padding:14px 18px;border-radius:3px;display:inline-block}
-.footer-logo img{width:170px}
-.footer-brand p{margin:18px 0 0;max-width:30em}
-.site-footer h3{color:#fff;font:600 16px/1.4 var(--sans);margin-bottom:12px}
+.footer-logo{background:#fff;padding:14px 18px;border-radius:2px;display:inline-block}
+.footer-logo img{width:164px}
+.footer-brand p{margin:20px 0 0;max-width:30em}
+.site-footer h3{color:#fff;font:600 12px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
 .site-footer ul{list-style:none;margin:0;padding:0}
 .site-footer li{margin-bottom:8px}
 .site-footer a{color:#fff;text-decoration:none}
 .site-footer a:hover{color:#9FD3EE}
-.footer-base{margin-top:48px;padding-top:24px;border-top:1px solid #2A3570;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
+.footer-base{margin-top:56px;padding-top:24px;border-top:1px solid #27306A;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px}
 
 .callbar{display:none}
 
 /* Responsive */
 @media (max-width:1100px){
-  .site-nav{gap:20px}
+  .nav{gap:22px}
   .header-phone{display:none}
 }
 @media (max-width:900px){
-  body{padding-bottom:76px}
-  .header-inner{height:72px;gap:12px}
-  .brand img{width:150px}
-  .menu-toggle{display:inline-flex;margin-left:auto}
+  :root{--header-h:66px}
+  body{padding-bottom:74px}
+  .header-inner{gap:12px}
+  .brand img{width:146px}
   .header-cta{display:none}
-  .site-nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px var(--gutter) 20px;display:none;margin:0}
-  .site-nav.open{display:flex}
-  .site-nav a{padding:14px 0;border-bottom:1px solid var(--line);font-size:18px}
-  .site-nav .nav-cta{display:flex;margin-top:16px;border:0;color:#fff;padding:0 24px}
-  .hero-grid,.about-grid,.process-grid,.case,.case.flip,.inquiry-grid,.official .wrap{grid-template-columns:1fr}
-  .case.flip .case-text{order:0}
-  .hero h1{max-width:16ch}
-  .hero-figure{padding:0 0 0 28px}
-  .cornerstone{bottom:-22px;width:110px}
-  .hero-figure figcaption{padding-left:100px}
-  .facts ul{grid-template-columns:1fr 1fr;gap:22px 18px}
-  .official-mark{width:60px}
-  .callbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
+  .menu-toggle{display:inline-flex;margin-left:auto}
+  .nav{position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;align-items:stretch;gap:0;margin:0;background:#fff;border-bottom:1px solid var(--hair);padding:8px var(--gutter) 22px;
+       opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility 0s .2s}
+  .nav.open{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .2s}
+  .nav a{padding:16px 0;border-bottom:1px solid var(--hair);font-size:13px}
+  .nav .nav-cta{margin-top:18px;border:0;color:#fff;padding:0 24px;font:600 15px/1 var(--sans);letter-spacing:.02em;text-transform:none}
+  .hero-media{height:min(78vh,640px);min-height:500px}
+  .hero-media img{object-position:62% center}
+  .hero-copy{bottom:72px}
+  .hero-caption{display:none}
+  .cornerstone{left:26px;width:88px}
+  .hero-media::after{background:linear-gradient(to top,rgba(12,16,40,.8) 0%,rgba(12,16,40,.55) 45%,rgba(12,16,40,.1) 80%)}
+  .figures ul{grid-template-columns:1fr 1fr;gap:28px 20px}
+  .about-grid,.process-grid,.case,.case.flip,.inquiry-grid,.official .wrap{grid-template-columns:1fr}
+  .case.flip .mat{order:0}
+  .official-mark{width:56px;margin-top:0}
+  .callbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:40;
+           padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:1px solid var(--hair)}
   .callbar .btn{width:100%}
 }
 @media (max-width:560px){
   body{font-size:16px}
-  .hero .lede{font-size:17px}
-  .hero-sign{display:none}
-  .hero-actions .btn{flex:1 1 auto}
-  .facts ul{grid-template-columns:1fr;gap:16px;padding:26px 0}
-  .facts strong{font-size:21px}
-  .facts span{margin-top:2px}
-  .about-copy .about-lead{font-size:20px}
-  .official blockquote p{font-size:23px}
+  .hero h1{font-size:40px}
+  .hero .lede{font-size:16px}
+  .hero-actions{gap:20px}
+  .figures{padding-top:84px}
+  .figures ul{grid-template-columns:1fr;gap:20px}
+  .figures strong{font-size:22px}
+  .about-lead{font-size:20px}
   .site-strip-photos{grid-template-columns:1fr 1fr}
-  .site-strip-photos picture:first-child{grid-column:span 2}
-  .case-photos .third{grid-column:span 3}
-  .case-photos .third:last-child{grid-column:span 6;aspect-ratio:16/9}
+  .site-strip-photos picture:first-child{grid-column:span 2;grid-row:auto}
+  .site-strip-photos img{aspect-ratio:3/2}
+  .project-photos{grid-template-columns:1fr 1fr}
+  .project-photos .lead{aspect-ratio:4/3}
+  .project-photos .sm:last-child{grid-column:1/-1;aspect-ratio:16/10}
+  .mat{padding:12px}
   .field-row{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .footer-brand{grid-column:span 2}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
+<header class="site-header" id="top">
   <div class="wrap header-inner">
     <a class="brand" href="#top" aria-label="Fisher Construction, Inc. home">
       <img src="assets/img/logo.png" width="580" height="185" alt="Fisher Construction Inc.">
     </a>
-    <nav class="site-nav" id="site-nav" aria-label="Main">
-      <a href="#about">About Scott</a>
+    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="#about">About</a>
       <a href="#process">How we build</a>
       <a href="#work">Homes</a>
       <a href="#recommendations">Recommendations</a>
-      <a class="btn btn-navy nav-cta" href="#start">Start a project</a>
+      <a href="#start" class="btn btn-solid nav-cta" hidden>Start a project</a>
     </nav>
     <a class="header-phone" href="tel:+19494225591">(949) 422-5591</a>
-    <a class="btn btn-navy header-cta" href="#start">Start a project</a>
-    <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu"><span></span></button>
+    <a class="btn btn-solid header-cta" href="#start">Start a project</a>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1 id="hero-title">High-end custom homes on the South Orange County coast.</h1>
-        <p class="lede">Fisher Construction is a Dana Point builder led by President Scott Fisher. We work alongside your architect and designer on homes from 5,000 to 15,000 square feet, and keep you informed with clear paperwork from the first budget to the final invoice.</p>
-        <div class="hero-actions">
-          <a class="btn btn-navy" href="#start">Start a project</a>
-          <a class="btn btn-line" href="#work">See the homes</a>
-        </div>
-        <p class="hero-sign">Let us show you the difference in a home that is Fisher Built.</p>
-      </div>
-      <figure class="hero-figure">
-        <picture>
-          <source srcset="assets/img/dana-point-12000-exterior.webp" type="image/webp">
-          <img src="assets/img/dana-point-12000-exterior.jpg" width="2000" height="1500" fetchpriority="high" alt="Modern two-story home with stone and stucco walls, floor-to-ceiling glass and a wide redwood deck stepping down to a lawn">
-        </picture>
-        <svg class="cornerstone" viewBox="-10 -10 190 170" aria-hidden="true" focusable="false">
-          <g transform="translate(36 0) rotate(45)">
-            <rect class="cs-a" x="0" y="0" width="52" height="52" fill="#0175AE"/>
-            <rect class="cs-b" x="58" y="0" width="52" height="52" fill="#11387D"/>
-            <rect class="cs-bar" x="-58" y="58" width="168" height="46" fill="#1C2769"/>
-          </g>
-        </svg>
-        <figcaption>Dana Point home, 12,000 sq ft.</figcaption>
-      </figure>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media">
+      <picture>
+        <source srcset="assets/img/dana-point-12000-exterior.webp" type="image/webp">
+        <img src="assets/img/dana-point-12000-exterior.jpg" width="2000" height="1500" fetchpriority="high" alt="Modern two-story home with stone and stucco walls, floor-to-ceiling glass and a wide redwood deck stepping down to a lawn">
+      </picture>
     </div>
+    <div class="hero-copy">
+      <div class="wrap">
+        <h1 id="hero-title">High-end custom homes on the South Orange County coast.</h1>
+        <p class="lede">Led by President Scott Fisher in Dana Point. Built alongside your architect and designer, with clear paperwork from the first budget to the final invoice.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#start">Start a project</a>
+          <a class="text-link" href="#work">See the homes</a>
+        </div>
+      </div>
+    </div>
+    <p class="hero-caption">Dana Point home, 12,000 sq ft</p>
+    <svg class="cornerstone" viewBox="-10 -10 190 170" aria-hidden="true" focusable="false">
+      <g transform="translate(36 0) rotate(45)">
+        <rect class="cs-a" x="0" y="0" width="52" height="52" fill="#0175AE"/>
+        <rect class="cs-b" x="58" y="0" width="52" height="52" fill="#11387D"/>
+        <rect class="cs-bar" x="-58" y="58" width="168" height="46" fill="#1C2769"/>
+      </g>
+    </svg>
   </section>
 
-  <section class="facts" aria-label="At a glance">
+  <section class="figures" aria-label="At a glance">
     <div class="wrap">
       <ul>
         <li><strong>CA License #863165</strong><span>Fisher Construction, Inc.</span></li>
@@ -316,12 +342,12 @@ legend,.field label{display:block;font-weight:600;color:var(--navy);margin-botto
     </div>
   </section>
 
-  <section class="section" id="about" aria-labelledby="about-title">
+  <section class="section about" id="about" aria-labelledby="about-title">
     <div class="wrap about-grid">
       <div class="about-copy">
         <h2 id="about-title">Built with the client, the architect and the designer.</h2>
         <p class="about-lead">Scott Fisher has spent more than 15 years in high-end custom home building, and he is known for honesty, organization and attention to detail.</p>
-        <p>Scott has personally overseen homes in very different styles, from ultra-modern to French provincial and Tuscan villa. Fisher Construction works with highly skilled subcontractors only, and works closely with the client, architect and designer so every detail is met.</p>
+        <p>Scott has personally overseen homes in very different styles, from ultra-modern to French provincial and Tuscan villa. Fisher Construction works only with highly skilled subcontractors, and works closely with the client, architect and designer so every detail is met.</p>
         <p>Most of our work comes from past clients, architects and designers who send the next project our way. Projects Scott has overseen have appeared in California Homes, Architectural Digest and on E! Entertainment&rsquo;s Celebrity Homes.</p>
       </div>
       <aside class="about-side" aria-label="What we build">
@@ -375,36 +401,44 @@ legend,.field label{display:block;font-weight:600;color:var(--navy);margin-botto
         <p>From our completed projects in Corona del Mar and Dana Point.</p>
       </div>
 
-      <article class="case">
-        <div class="case-text">
-          <h3>Corona del Mar home</h3>
-          <p class="case-meta">4,500 sq ft. Completed project.</p>
-          <p>A stone-and-stucco home with a great room that opens fully to the view, a veined-stone kitchen island and stacked-stone fireplace walls framed by custom cabinetry.</p>
+      <article class="project" aria-labelledby="cdm-title">
+        <div class="project-head">
+          <div>
+            <span class="place">Corona del Mar</span>
+            <h3 id="cdm-title">Corona del Mar home</h3>
+          </div>
+          <p>4,500 sq ft. A stone-and-stucco home with a great room that opens fully to the view, a veined-stone kitchen island and stacked-stone fireplace walls framed by custom cabinetry.</p>
         </div>
-        <div class="case-photos">
-          <figure class="big"><picture><source srcset="assets/img/cdm-kitchen-island.webp" type="image/webp"><img src="assets/img/cdm-kitchen-island.jpg" width="1280" height="960" loading="lazy" alt="Kitchen island with veined gray stone top and wood cabinetry"></picture></figure>
-          <figure class="third"><picture><source srcset="assets/img/cdm-great-room.webp" type="image/webp"><img src="assets/img/cdm-great-room.jpg" width="1280" height="960" loading="lazy" alt="Great room with wood floors and a wall of glass fully opened to a view of the coast"></picture></figure>
-          <figure class="third"><picture><source srcset="assets/img/cdm-fireplace-wall.webp" type="image/webp"><img src="assets/img/cdm-fireplace-wall.jpg" width="1280" height="960" loading="lazy" alt="Stacked-stone fireplace wall with lit built-in shelving on both sides"></picture></figure>
-          <figure class="third"><picture><source srcset="assets/img/cdm-stone-facade.webp" type="image/webp"><img src="assets/img/cdm-stone-facade.jpg" width="960" height="1280" loading="lazy" alt="Limestone-clad exterior wall with a raised planter"></picture></figure>
+        <div class="project-photos">
+          <figure class="lead"><picture><source srcset="assets/img/cdm-kitchen-island.webp" type="image/webp"><img src="assets/img/cdm-kitchen-island.jpg" width="1280" height="960" loading="lazy" alt="Kitchen island with veined gray stone top and wood cabinetry"></picture></figure>
+          <figure class="sm"><picture><source srcset="assets/img/cdm-great-room.webp" type="image/webp"><img src="assets/img/cdm-great-room.jpg" width="1280" height="960" loading="lazy" alt="Great room with wood floors and a wall of glass fully opened to a view of the coast"></picture></figure>
+          <figure class="sm"><picture><source srcset="assets/img/cdm-fireplace-wall.webp" type="image/webp"><img src="assets/img/cdm-fireplace-wall.jpg" width="1280" height="960" loading="lazy" alt="Stacked-stone fireplace wall with lit built-in shelving on both sides"></picture></figure>
+          <figure class="sm"><picture><source srcset="assets/img/cdm-stone-facade.webp" type="image/webp"><img src="assets/img/cdm-stone-facade.jpg" width="960" height="1280" loading="lazy" alt="Limestone-clad exterior wall with a raised planter"></picture></figure>
         </div>
       </article>
 
-      <div class="note">
-        <p>The modern home at the top of this page is the 12,000-square-foot Dana Point home from our completed projects.</p>
-      </div>
+      <p class="note">The modern home at the top of this page is the 12,000-square-foot Dana Point home from our completed projects.</p>
     </div>
   </section>
 
-  <section class="section prior" id="recommendations" aria-labelledby="prior-title">
+  <section class="section earlier" id="recommendations" aria-labelledby="earlier-title">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="prior-title">Two homes Scott built, in the owners&rsquo; words.</h2>
+        <h2 id="earlier-title">Two homes Scott built, in the owners&rsquo; words.</h2>
         <p>Scott built these homes while co-owner of another construction company. The recommendations come from the homeowners themselves.</p>
       </div>
 
-      <article class="case flip">
+      <article class="case" aria-labelledby="strand-title">
+        <div class="mat">
+          <div class="mat-grid">
+            <figure class="lead"><picture><source srcset="assets/img/strand-pool-beach.webp" type="image/webp"><img src="assets/img/strand-pool-beach.jpg" width="750" height="500" loading="lazy" alt="Stone villa with arched loggias above a pool and lawn overlooking the beach"></picture></figure>
+            <figure class="sm"><picture><source srcset="assets/img/strand-arched-loggia.webp" type="image/webp"><img src="assets/img/strand-arched-loggia.jpg" width="750" height="500" loading="lazy" alt="Arched stone loggia framing the ocean, with lanterns and a carved statue"></picture></figure>
+            <figure class="sm"><picture><source srcset="assets/img/strand-kitchen.webp" type="image/webp"><img src="assets/img/strand-kitchen.jpg" width="750" height="500" loading="lazy" alt="Cream kitchen with a carved island, blue velvet stools and a hanging copper pot rack"></picture></figure>
+          </div>
+        </div>
         <div class="case-text">
-          <h3>The Strand, Dana Point</h3>
+          <span class="place">Dana Point</span>
+          <h3 id="strand-title">The Strand</h3>
           <p class="case-meta">11,000 sq ft. French provincial. New construction.</p>
           <blockquote>
             <p>&ldquo;They obviously took a lot of pride in the construction of my house and it shows in the final product.&rdquo;</p>
@@ -412,16 +446,19 @@ legend,.field label{display:block;font-weight:600;color:var(--navy);margin-botto
           </blockquote>
           <p class="disclosure">Built by Scott Fisher while co-owner of another company.</p>
         </div>
-        <div class="case-photos">
-          <figure class="big tall-crop"><picture><source srcset="assets/img/strand-pool-beach.webp" type="image/webp"><img src="assets/img/strand-pool-beach.jpg" width="750" height="500" loading="lazy" alt="Stone villa with arched loggias above a pool and lawn overlooking the beach"></picture></figure>
-          <figure class="half"><picture><source srcset="assets/img/strand-arched-loggia.webp" type="image/webp"><img src="assets/img/strand-arched-loggia.jpg" width="750" height="500" loading="lazy" alt="Arched stone loggia framing the ocean, with lanterns and a carved statue"></picture></figure>
-          <figure class="half"><picture><source srcset="assets/img/strand-kitchen.webp" type="image/webp"><img src="assets/img/strand-kitchen.jpg" width="750" height="500" loading="lazy" alt="Cream kitchen with a carved island, blue velvet stools and a hanging copper pot rack"></picture></figure>
-        </div>
       </article>
 
-      <article class="case">
+      <article class="case flip" aria-labelledby="emerald-title">
+        <div class="mat">
+          <div class="mat-grid">
+            <figure class="lead"><picture><source srcset="assets/img/emerald-bay-living.webp" type="image/webp"><img src="assets/img/emerald-bay-living.jpg" width="800" height="531" loading="lazy" alt="Living room with a curved wall of glass looking out over palms to the ocean"></picture></figure>
+            <figure class="sm"><picture><source srcset="assets/img/emerald-bay-terrace.webp" type="image/webp"><img src="assets/img/emerald-bay-terrace.jpg" width="800" height="533" loading="lazy" alt="Rooftop terrace with outdoor sofas and glass railings above Laguna Beach"></picture></figure>
+            <figure class="sm"><picture><source srcset="assets/img/emerald-bay-wine-room.webp" type="image/webp"><img src="assets/img/emerald-bay-wine-room.jpg" width="800" height="533" loading="lazy" alt="Walnut wine room with floor-to-ceiling racks and a tasting table"></picture></figure>
+          </div>
+        </div>
         <div class="case-text">
-          <h3>Emerald Bay, Laguna Beach</h3>
+          <span class="place">Laguna Beach</span>
+          <h3 id="emerald-title">Emerald Bay</h3>
           <p class="case-meta">5,000 sq ft. Modern. New construction.</p>
           <blockquote>
             <p>&ldquo;Your attention to detail is evident throughout; the quality and craftsmanship have been admired from all who have seen it. Your communication and team effort approach made the entire process enjoyable and gave me a sense of comfort and understanding throughout the construction of my home.&rdquo;</p>
@@ -429,25 +466,20 @@ legend,.field label{display:block;font-weight:600;color:var(--navy);margin-botto
           </blockquote>
           <p class="disclosure">Built by Scott Fisher while co-owner of another company.</p>
         </div>
-        <div class="case-photos">
-          <figure class="big"><picture><source srcset="assets/img/emerald-bay-living.webp" type="image/webp"><img src="assets/img/emerald-bay-living.jpg" width="800" height="531" loading="lazy" alt="Living room with a curved wall of glass looking out over palms to the ocean"></picture></figure>
-          <figure class="half"><picture><source srcset="assets/img/emerald-bay-terrace.webp" type="image/webp"><img src="assets/img/emerald-bay-terrace.jpg" width="800" height="533" loading="lazy" alt="Rooftop terrace with outdoor sofas and glass railings above Laguna Beach"></picture></figure>
-          <figure class="half"><picture><source srcset="assets/img/emerald-bay-wine-room.webp" type="image/webp"><img src="assets/img/emerald-bay-wine-room.jpg" width="800" height="533" loading="lazy" alt="Walnut wine room with floor-to-ceiling racks and a tasting table"></picture></figure>
-        </div>
       </article>
     </div>
   </section>
 
-  <section class="section official" aria-labelledby="official-title">
+  <section class="official" aria-labelledby="official-title">
     <div class="wrap">
       <svg class="official-mark" viewBox="-10 -10 190 170" aria-hidden="true" focusable="false">
         <g transform="translate(36 0) rotate(45)">
           <rect x="0" y="0" width="52" height="52" fill="#0175AE"/>
-          <rect x="58" y="0" width="52" height="52" fill="#3A5BB0"/>
-          <rect x="-58" y="58" width="168" height="46" fill="#FFFFFF"/>
+          <rect x="58" y="0" width="52" height="52" fill="#11387D"/>
+          <rect x="-58" y="58" width="168" height="46" fill="#1C2769"/>
         </g>
       </svg>
-      <div>
+      <div class="official-inner">
         <h2 id="official-title" class="sr-only">From Dana Point&rsquo;s building official</h2>
         <blockquote>
           <p>&ldquo;I have enjoyed working with Scott on two large, complicated custom homes in Dana Point. He has a good grasp of the building code, which makes my job easier, and he is very organized. He is extremely conscientious and his projects show his attention to detail.&rdquo;</p>
@@ -523,7 +555,7 @@ legend,.field label{display:block;font-weight:600;color:var(--navy);margin-botto
           <textarea id="f-notes" name="notes" placeholder="Approximate size, style, your architect or designer, anything we should know"></textarea>
         </div>
         <div class="form-foot">
-          <button class="btn btn-navy" type="submit">Send project details</button>
+          <button class="btn btn-solid" type="submit">Send project details</button>
           <p>We&rsquo;ll need a phone number or an email to reply.</p>
         </div>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -566,7 +598,7 @@ legend,.field label{display:block;font-weight:600;color:var(--navy);margin-botto
 
 <div class="callbar" aria-label="Quick contact">
   <a class="btn btn-line" href="tel:+19494225591">Call Scott</a>
-  <a class="btn btn-navy" href="#start">Start a project</a>
+  <a class="btn btn-solid" href="#start">Start a project</a>
 </div>
 
 <script>
@@ -575,7 +607,10 @@ legend,.field label{display:block;font-weight:600;color:var(--navy);margin-botto
   var onScroll=function(){header.classList.toggle('scrolled',window.scrollY>8)};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  var toggle=document.querySelector('.menu-toggle'),nav=document.getElementById('site-nav');
+  var toggle=document.querySelector('.menu-toggle'),nav=document.getElementById('site-nav'),navCta=nav.querySelector('.nav-cta');
+  var mq=window.matchMedia('(max-width:900px)');
+  var syncCta=function(){navCta.hidden=!mq.matches};
+  mq.addEventListener?mq.addEventListener('change',syncCta):mq.addListener(syncCta);syncCta();
   var setMenu=function(open){
     nav.classList.toggle('open',open);
     toggle.setAttribute('aria-expanded',String(open));

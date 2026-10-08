@@ -11,7 +11,8 @@ A redesigned homepage for [Fisher Construction, Inc. (Fisher Built)](https://fis
 - **Case studies, not just galleries.** Each project shows its size, style and location alongside its photos. Homes Scott built while co-owner of another company are labelled that way, as on the current site.
 - **The process is the selling point.** Daily and weekly reports, three bids per trade, bi-weekly billing spreadsheets and the closeout binder are shown as a clear five-step sequence under "No surprises", in the client's own words.
 - **A way to get in touch.** The site had no inquiry form. The new one asks for project type, location, plan status and timing, then opens a pre-filled email to Scott.
-- **Brand kept, used better.** The original logo stays. Its three blue blocks become the hero accent and the navy and harbor blue are used as accents on calm whites and coastal greys.
+- **Brand kept, used better.** The original logo stays. Its three blue blocks are set at the base of the hero photo like a cornerstone, and the navy and harbor blue are used as accents on calm whites and coastal greys.
+- **Benchmarked against the best in the segment.** The layout is calibrated against leading luxury builders: Patterson Custom Homes and Winkle Custom Homes in Newport Beach, Dowbuilt, and Marmol Radziner. From them it takes a single full-width hero photograph, projects named by place and scope, and matted photo frames that let smaller archive photos look curated.
 
 ## Stack
 
